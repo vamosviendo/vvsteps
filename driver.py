@@ -200,6 +200,8 @@ class MiFirefox(webdriver.Firefox):
                 else:
                     valor = False
                 self.completar_checkbox(campo, valor)
+            except TypeError:   # texto == None
+                pass
 
     def pulsar(self, boton='id_btn_submit', crit=By.ID):
         self.esperar_elemento(boton, crit).click()
