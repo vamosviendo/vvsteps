@@ -172,10 +172,10 @@ class MiFirefox(webdriver.Firefox):
     def esperar_opciones_de_campo(self, campo, form=None):
         form = form or self.esperar_elemento('form', By.TAG_NAME)
         try:
-            select = form.find_element_by_id(f'id_{campo}')
+            select = form.esperar_elemento(f'id_{campo}')
         except NoSuchElementException:
-            select = form.find_element_by_id(f'id_select_{campo}')
-        return [x.text for x in select.find_elements_by_tag_name('option')]
+            select = form.esperar_elemento(f'id_select_{campo}')
+        return [x.text for x in select.esperar_elementos('option', By.TAG_NAME)]
 
     @staticmethod
     def completar_checkbox(checkbox, boolvalue):
