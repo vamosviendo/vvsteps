@@ -14,7 +14,6 @@ from selenium.webdriver.support.select import Select
 from vvmodel.models import MiModel
 from .helpers import esperar
 
-#
 
 class MiWebElement(WebElement):
 
@@ -215,7 +214,7 @@ class MiFirefox(webdriver.Firefox):
         if checkbox.is_selected() != boolvalue:
             checkbox.click()
 
-    def completar(self, id_campo: str, texto: str, criterio: str = By.ID):
+    def completar(self, id_campo: str, texto: str | bool | date, criterio: str = By.ID):
         """ Completa un campo de texto en un form, o selecciona un valor
             de un campo select."""
         campo = self.esperar_elemento(id_campo, criterio=criterio)
